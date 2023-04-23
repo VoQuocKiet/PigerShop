@@ -588,18 +588,19 @@ public class homepage extends javax.swing.JFrame {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbProductName2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtProductPrice2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11)))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnConfirm)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -828,6 +829,7 @@ public class homepage extends javax.swing.JFrame {
         addPro();
         fillToTable();
         saveFile();
+        resetForm();
         }
     }//GEN-LAST:event_btnAddProActionPerformed
     
@@ -836,7 +838,8 @@ public class homepage extends javax.swing.JFrame {
         String pId = txtPID.getText();
         if(!"".equals(txtPID.getText()) && !"".equals(txtPName.getText())){
             for (product p : proList) {
-                product pro = new product(p.getCategoryCode(),p.getCategoryName(),p.getProductCode(), p.getProductName(), p.getProductPrice());
+                product pro = new product(p.getCategoryCode(),p.getCategoryName(),
+                p.getProductCode(), p.getProductName(), p.getProductPrice());
                 if (pId.equals(p.getProductCode())) {
                     txtPID.setBackground(Color.red);
                     return false;
@@ -957,6 +960,7 @@ public class homepage extends javax.swing.JFrame {
         updatePro();
         fillToTable();
         saveFile();
+        resetForm();
     }//GEN-LAST:event_btnUpdateProActionPerformed
 
     private void btnRefeshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefeshActionPerformed
@@ -985,11 +989,11 @@ public class homepage extends javax.swing.JFrame {
         Double mPrice = Double.parseDouble(txtProductPrice2.getText())*0.2;
         Double price = Double.parseDouble(txtProductPrice2.getText());
         if ("Big".equals(bgSize.getSelection().getActionCommand())) {
-                txtTotal.setText(price + bPrice + "VND");
+                txtTotal.setText(price + bPrice + "");
         }else if ("Medium".equals(bgSize.getSelection().getActionCommand())) {
-                txtTotal.setText(price + mPrice + "VND");
+                txtTotal.setText(price + mPrice + "");
         }else if ("Small".equals(bgSize.getSelection().getActionCommand())) {
-                txtTotal.setText(price + "VND");
+                txtTotal.setText(price + "");
         }
     }//GEN-LAST:event_btnConfirmActionPerformed
 
@@ -1055,7 +1059,7 @@ public class homepage extends javax.swing.JFrame {
         p.setProductCode(txtPID.getText());
         p.setProductName(txtPName.getText());
         p.setProductPrice(Double.parseDouble(txtPPrice.getText()));
-        resetForm();
+
         }
     }
     
